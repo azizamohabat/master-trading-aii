@@ -1,0 +1,10 @@
+[build]
+  publish = "."
+
+[functions]
+  directory = "netlify/functions"
+
+[[redirects]]
+  from = "/api/ai/tutor"
+  to = "/.netlify/functions/tutor"
+  status = 200
