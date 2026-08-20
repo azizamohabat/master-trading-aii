@@ -1,4 +1,4 @@
-<!doctype html>
+   <!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 <meta name="theme-color" content="#05070f"><title>MASTER TRADING+AI</title>
@@ -99,4 +99,25 @@ function render(){renderNav();let app=document.getElementById("app"),c;if(route=
 render();
 </script>
 <footer class="footer"><div class="container">MASTER TRADING+AI · Educational platform · Not financial advice. Production authentication, AI and Binance Pay must run server-side.</div></footer>
+<script>
+async function askTutor(question) {
+  const response = await fetch("/api/ai/tutor", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      message: question
+    })
+  });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.error || "AI Tutor request failed");
+  }
+
+  return data.reply;
+}
+</script>
 </body></html>
